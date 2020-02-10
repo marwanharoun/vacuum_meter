@@ -41,7 +41,7 @@ def get_values():
 def create_csv(rows):
     header = ['timestamp', 'load', 'pressure']
     filename = '{:%Y%m%d-%H%M%S}'.format(datetime.datetime.now())
-    DIR = '/home/pi/vacuum_meter/data/'
+    DIR = '/home/pi/data/'
     with open(DIR+filename+'.csv','wt') as f:
         csv_writer = csv.DictWriter(f, fieldnames=header)
         csv_writer.writeheader()
