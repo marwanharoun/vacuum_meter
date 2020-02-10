@@ -7,6 +7,7 @@ import load
 import analog
 import sys
 import csv
+import time
 
 
 # GLOBAL VARIABLES:
@@ -30,7 +31,7 @@ def get_values():
             pressure = analog_input.get_value()
             row = {'timestamp': '{:%Y-%m-%d %H:%M:%S:%f}'.format(datetime.datetime.now()), 'load':load, 'pressure':pressure}
             rows.append(row)
-            #time.sleep(0.25)
+            time.sleep(0.25)
     except KeyboardInterrupt:
         print(rows)
         create_csv(rows)
