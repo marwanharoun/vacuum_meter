@@ -1,4 +1,4 @@
-
+cd /Users/mh/OneDrive/stom/systems/vacuum_meter/
 echo Enter commit description:
 read DESC
 

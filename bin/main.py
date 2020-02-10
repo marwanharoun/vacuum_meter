@@ -8,7 +8,6 @@ import analog
 import sys
 import csv
 import time
-#test
 
 
 # GLOBAL VARIABLES:
