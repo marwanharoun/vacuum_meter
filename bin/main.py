@@ -50,30 +50,3 @@ def create_csv(rows):
 
 
 get_values()
-
-
-
-
-#### MAIN ####
-
-
-# while True:
-#
-#     set_logger()
-#     sleep_duration = 60
-#     try:
-#
-#         t="{0:.2f}".format(t)
-#         h="{0:.2f}".format(h)
-#         results = "t="+str(t),"h="+str(h)
-#         subprocess.check_output('/usr/lib/inst-mon-pi/srv/send_value.sh '+str(t)+' '+str(h), shell=True)
-#         logging.info(results)
-#
-#     except Exception as e:
-#         print(e)
-#         sleep_duration = 5
-#         logging.error(e)
-#
-#
-#     time.sleep(sleep_duration)
-# time.sleep(5)
