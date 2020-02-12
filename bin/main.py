@@ -40,7 +40,7 @@ def get_values():
 
 def create_csv(rows):
     header = ['timestamp', 'load', 'pressure']
-    desc = input("Enter description").replace(" ","_")
+    desc = input("Enter description: ").replace(" ","_")
     filename = '{:%Y%m%d-%H%M%S}'.format(datetime.datetime.now())+"-"+desc
     DIR = '/home/pi/data/'
     with open(DIR+filename+'.csv','wt') as f:
