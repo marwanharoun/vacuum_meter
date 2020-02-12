@@ -40,7 +40,8 @@ def get_values():
 
 def create_csv(rows):
     header = ['timestamp', 'load', 'pressure']
-    filename = '{:%Y%m%d-%H%M%S}'.format(datetime.datetime.now())
+    desc = raw_input("Enter description").replace(" ","_")
+    filename = '{:%Y%m%d-%H%M%S}'.format(datetime.datetime.now())+"-"+desc
     DIR = '/home/pi/data/'
     with open(DIR+filename+'.csv','wt') as f:
         csv_writer = csv.DictWriter(f, fieldnames=header)
