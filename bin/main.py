@@ -27,7 +27,7 @@ def get_values():
     rows = []
     try:
         while True:
-            load = load_cell.get_value()
+            load = -load_cell.get_value()
             pressure = analog_input.get_value()
             row = {'timestamp': '{:%Y-%m-%d %H:%M:%S:%f}'.format(datetime.datetime.now()), 'load':load, 'pressure':pressure}
             rows.append(row)
