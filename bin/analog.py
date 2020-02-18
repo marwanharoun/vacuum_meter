@@ -18,5 +18,7 @@ class AnalogInput:
         # print(value)
         # FOR PRESSURE SENSOR ONLY:
         # Calibration with bme280 showed that pressure should be adjusted as follows:
-        value = 1.259149674 * value + -256.0778551
+        value = 1.259149674 * value + -256.0778551 + 48.74493367
+        # 48.74493367 comes from doing a regression on data received from the first regression,
+        # which showed that coeficient got to one but there was still an offset of 48.7
         return value
