@@ -29,8 +29,9 @@ def get_values():
         while True:
             A = 0.00488594648262289
             B = -106.44773936296
+            C = -155.787500483901   #Verticality Correction
             raw = load_cell.get_value()
-            load = A*raw+B
+            load = A*raw + B - C
             pressure = analog_input.get_value()
             print(pressure,"  ","{0:.2f}".format(load))
             row = {'timestamp': '{:%Y-%m-%d %H:%M:%S:%f}'.format(datetime.datetime.now()), 'load':load, 'pressure':pressure}
