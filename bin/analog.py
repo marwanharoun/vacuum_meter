@@ -16,4 +16,7 @@ class AnalogInput:
         value = self.mcp.read_adc(0)
         # Print the ADC values.
         # print(value)
+        # FOR PRESSURE SENSOR ONLY:
+        # Calibration with bme280 showed that pressure should be increased by 50mBar
+        value = value + 50
         return value
