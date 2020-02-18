@@ -18,5 +18,5 @@ class AnalogInput:
         # print(value)
         # FOR PRESSURE SENSOR ONLY:
         # Calibration with bme280 showed that pressure should be adjusted as follows:
-        value = 0.784711450838 * value + 210.292253381195
+        value = 1.259149674 * value + -256.0778551
         return value
