@@ -32,8 +32,8 @@ class LoadCell:
 
     def get_value(self):
         #CALIBRATION CONSTANTS:
-        A = 567/115000
-        B = -2835/23
+        A = 1
+        B = 0
         load = A*(self.hx711.get_weight_mean(1)) + B
         # print(-load)
         return load
