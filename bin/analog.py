@@ -17,6 +17,6 @@ class AnalogInput:
         # Print the ADC values.
         # print(value)
         # FOR PRESSURE SENSOR ONLY:
-        # Calibration with bme280 showed that pressure should be increased by 50mBar
-        value = value + 50
+        # Calibration with bme280 showed that pressure should be increased by 43mBar
+        value = value + 43
         return value
