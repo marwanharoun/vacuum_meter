@@ -33,6 +33,7 @@ def get_values():
         while True:
             bme_pressure = bme280.pressure
             analogue_pressure = analog_input.get_value()
+            print(bme_pressure+"  "+analogue_pressure)
             row = {'timestamp': '{:%Y-%m-%d %H:%M:%S:%f}'.format(datetime.datetime.now()), 'bme_pressure':bme_pressure, 'analogue_pressure':analogue_pressure}
             rows.append(row)
             time.sleep(0.25)

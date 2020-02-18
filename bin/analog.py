@@ -15,5 +15,5 @@ class AnalogInput:
         # Read all the ADC channel values in a list.
         value = self.mcp.read_adc(0)
         # Print the ADC values.
-        print(value)
+        # print(value)
         return value

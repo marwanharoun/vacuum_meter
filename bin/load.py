@@ -35,5 +35,5 @@ class LoadCell:
         A = 567/115000
         B = -2835/23
         load = A*(self.hx711.get_weight_mean(1)) + B
-        print(-load)
+        # print(-load)
         return load
