@@ -33,7 +33,7 @@ def get_values():
             raw = load_cell.get_value()
             load = A*raw + B - C
             pressure = analog_input.get_value()
-            print(pressure,"  ","{0:.2f}".format(load))
+            print("{0:.2f}".format(pressure),"  ","{0:.2f}".format(load))
             row = {'timestamp': '{:%Y-%m-%d %H:%M:%S:%f}'.format(datetime.datetime.now()), 'load':load, 'pressure':pressure}
             rows.append(row)
             time.sleep(0.25)

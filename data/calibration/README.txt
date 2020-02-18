@@ -1,0 +1,4 @@
+Calibration for weight was done by measuring 0, 774g, 5268g and using règle de trois
+Calibration for pressure was done by measuring simultameously from analog sensor and bme280, and then doing a linear regression to get A and B for the linear equation between bme280 results and analog.
+Another measurement set was made and it showed a persistant offset. So after a new regression with the new measurement set, an additional offset of 43 was found and corrected in the code.
+Note that in the code, the calibration for load was inputted in main, whereas for the pressure it was inputted in analog.py because it is used in multiple scripts, so that we can avoid having to adjust all of them
