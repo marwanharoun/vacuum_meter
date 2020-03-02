@@ -14,7 +14,7 @@ import time
 # GLOBAL VARIABLES:
 load_cell = load.LoadCell()
 analog_input = analog.AnalogInput()
-flow_input = flow.FlowRate()
+flow_input = flow.Flow()
 
 
 #Logger config:
