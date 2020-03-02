@@ -1,37 +1,31 @@
 import RPi.GPIO as GPIO
-import time, sys
+import time
 
 
-class FlowRate:
-    global rate_cnt, tot_cnt
-    rate_cnt = 0
-    tot_cnt = 0
 
-    def pulse_cnt(self, inpt_pin):
-        global rate_cnt, tot_cnt
-        rate_cnt += 1
-        tot_cnt += 1
-
+class Flow:
 
     def __init__(self):
         GPIO.setmode(GPIO.BCM)
-        inpt = 27
-        GPIO.setup(inpt, GPIO.IN)
-        GPIO.add_event_detect(inpt,GPIO.FALLING,callback=self.pulse_cnt,bouncetime=10)
-        
+        GPIO.setup(27, GPIO.IN)
+        global rev_count
+        rev_count = 0
+        GPIO.add_event_detect(27, GPIO.RISING, callback=self.increase_rev)
+
+    def increase_rev(self,channel):
+        global rev_count
+        rev_count +=1
+
     
     def get_value(self):
-        rate_cnt = 0
-        constant = 0.006
-        rpt_int = 0.25
-        time_new = time.time()+rpt_int
-        while time.time() <= time_new:
-            try:
-                None
-            except KeyboardInterrupt:
-                GPIO.cleanup()
-                sys.exit()
-        rate = round(((rate_cnt*constant)/(rpt_int/60)),2)
-        tot = round(tot_cnt*constant,1)
-        return rate
+        global rev_count
+        time.sleep(0.25)
+        print("We are at ", rev_count)
+        value = rev_count
+        rev_count = 0
+        return value
 
+
+#flow = Flow()
+#while True:
+#    flow.get_value()
