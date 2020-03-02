@@ -8,6 +8,12 @@ import time, sys
 
 
 class FlowRate:
+    def Pulse_cnt(inpt_pin):
+        global rate_cnt, tot_cnt
+        rate_cnt += 1
+        tot_cnt += 1
+
+
     def __init__(self):
         GPIO.setmode(GPIO.BCM)
         inpt = 27
@@ -19,16 +25,10 @@ class FlowRate:
         global rate_cnt, tot_cnt
         rate_cnt = 0
         tot_cnt = 0
-        rpt_int = float(input('Input desired report intervals in sec: '))
+        rpt_int = 0.25
         GPIO.add_event_detect(inpt,GPIO.FALLING,callback=Pulse_cnt,bouncetime=10)
         
-        
-    def Pulse_cnt(inpt_pin):
-        global rate_cnt, tot_cnt
-        rate_cnt += 1
-        tot_cnt += 1
-
-
+    
     def get_value(self):
         time_new = time.time()+rpt_int
         rate_cnt = 0
