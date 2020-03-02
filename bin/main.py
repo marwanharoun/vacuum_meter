@@ -14,6 +14,7 @@ import time
 # GLOBAL VARIABLES:
 load_cell = load.LoadCell()
 analog_input = analog.AnalogInput()
+flow_input = flow.FlowRate()
 
 
 #Logger config:
@@ -34,7 +35,7 @@ def get_values():
             raw = load_cell.get_value()
             load = A*raw + B - C
             pressure = analog_input.get_value()
-            flow_rate = flow.get_value()
+            flow_rate = flow_input.get_value()
             print("{0:.2f}".format(pressure),"  ","{0:.2f}".format(load),"{0:.2f}".format(flow_rate))
             row = {'timestamp': '{:%Y-%m-%d %H:%M:%S:%f}'.format(datetime.datetime.now()), 'load':load, 'pressure':pressure, 'flow':flow_rate}
             rows.append(row)
