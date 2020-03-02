@@ -30,7 +30,6 @@ class FlowRate:
             except KeyboardInterrupt:
                 GPIO.cleanup()
                 sys.exit()
-        minutes += 1
         rate = round(((rate_cnt*constant)/(rpt_int/60)),2)
         tot = round(tot_cnt*constant,1)
         GPIO.cleanup()
