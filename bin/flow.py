@@ -14,7 +14,7 @@ class FlowRate:
 
 
     def __init__(self):
-        GPIO.setmode(GPIO.BCM)
+        #GPIO.setmode(GPIO.BCM)
         inpt = 27
         GPIO.setup(inpt, GPIO.IN)
         GPIO.add_event_detect(inpt,GPIO.FALLING,callback=self.pulse_cnt,bouncetime=10)
