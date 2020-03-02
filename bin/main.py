@@ -39,7 +39,7 @@ def get_values():
             print("{0:.2f}".format(pressure),"  ","{0:.2f}".format(load),"{0:.2f}".format(flow_rate))
             row = {'timestamp': '{:%Y-%m-%d %H:%M:%S:%f}'.format(datetime.datetime.now()), 'load':load, 'pressure':pressure, 'flow':flow_rate}
             rows.append(row)
-            time.sleep(0.25)
+            time.sleep(0.5)
     except KeyboardInterrupt:
         print(rows)
         create_csv(rows)
