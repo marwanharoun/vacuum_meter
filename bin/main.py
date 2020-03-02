@@ -5,6 +5,7 @@ import random
 import subprocess
 import load
 import analog
+import flow
 import sys
 import csv
 import time
@@ -33,8 +34,9 @@ def get_values():
             raw = load_cell.get_value()
             load = A*raw + B - C
             pressure = analog_input.get_value()
+            flow = flow.get_value()
             print("{0:.2f}".format(pressure),"  ","{0:.2f}".format(load))
-            row = {'timestamp': '{:%Y-%m-%d %H:%M:%S:%f}'.format(datetime.datetime.now()), 'load':load, 'pressure':pressure}
+            row = {'timestamp': '{:%Y-%m-%d %H:%M:%S:%f}'.format(datetime.datetime.now()), 'load':load, 'pressure':pressure, 'flow':flow}
             rows.append(row)
             time.sleep(0.25)
     except KeyboardInterrupt:
@@ -44,7 +46,7 @@ def get_values():
 
 
 def create_csv(rows):
-    header = ['timestamp', 'load', 'pressure']
+    header = ['timestamp', 'load', 'pressure','flow']
     desc = input("Enter description: ").replace(" ","_")
     filename = '{:%Y%m%d-%H%M%S}'.format(datetime.datetime.now())+"-"+desc
     DIR = '/home/pi/data/'
