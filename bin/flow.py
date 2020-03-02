@@ -32,6 +32,5 @@ class FlowRate:
                 sys.exit()
         rate = round(((rate_cnt*constant)/(rpt_int/60)),2)
         tot = round(tot_cnt*constant,1)
-        GPIO.cleanup()
         return rate
 
