@@ -21,6 +21,7 @@ class FlowRate:
         
     
     def get_value(self):
+        rate = 0
         constant = 0.006
         rpt_int = 0.25
         time_new = time.time()+rpt_int
