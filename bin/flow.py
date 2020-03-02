@@ -9,8 +9,8 @@ import time, sys
 
 class FlowRate:
     def __init__(self):
-        GPIO.setmode(GPIO.BOARD)
-        inpt = 13
+        GPIO.setmode(GPIO.BCM)
+        inpt = 27
         GPIO.setup(inpt, GPIO.IN)
         minutes = 0
         constant = 0.006
