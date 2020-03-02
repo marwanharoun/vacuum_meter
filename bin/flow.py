@@ -8,7 +8,7 @@ import time, sys
 
 
 class FlowRate:
-    def Pulse_cnt(inpt_pin):
+    def Pulse_cnt(self, inpt_pin):
         global rate_cnt, tot_cnt
         rate_cnt += 1
         tot_cnt += 1
@@ -26,7 +26,7 @@ class FlowRate:
         rate_cnt = 0
         tot_cnt = 0
         rpt_int = 0.25
-        GPIO.add_event_detect(inpt,GPIO.FALLING,callback=Pulse_cnt,bouncetime=10)
+        GPIO.add_event_detect(inpt,GPIO.FALLING,callback=self.Pulse_cnt,bouncetime=10)
         
     
     def get_value(self):
