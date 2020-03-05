@@ -51,6 +51,7 @@ def get_pressure(type="pressure"):
         print(time,"     ","{0:.2f}".format(value))
         if running == False:
             break
+        time.sleep(0.25)
     
 
 def get_flow(type="flow"):
@@ -62,6 +63,7 @@ def get_flow(type="flow"):
         print(time,"                    ","{0:.2f}".format(value))
         if running == False:
             break
+        time.sleep(0.25)
     
 def get_load(type="load"):
     while running:
@@ -72,6 +74,7 @@ def get_load(type="load"):
         print(time,"                                    ","{0:.2f}".format(value))
         if running == False:
             break
+        time.sleep(0.25)
         
 
 
