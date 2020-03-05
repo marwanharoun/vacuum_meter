@@ -48,7 +48,7 @@ def get_pressure(type="pressure"):
         timestamp = timer.elapsed()
         row = {'timestamp': timestamp, 'value':value, 'type':type}
         rows_pressure.append(row)
-        print(time,"     ","{0:.2f}".format(value))
+        print(timestamp,"     ","{0:.2f}".format(value))
         if running == False:
             break
         time.sleep(0.25)
@@ -60,7 +60,7 @@ def get_flow(type="flow"):
         timestamp = timer.elapsed()
         row = {'timestamp': timestamp, 'value':value, 'type':type}
         rows_flow.append(row)
-        print(time,"                    ","{0:.2f}".format(value))
+        print(timestamp,"                    ","{0:.2f}".format(value))
         if running == False:
             break
         time.sleep(0.25)
@@ -71,7 +71,7 @@ def get_load(type="load"):
         timestamp = timer.elapsed()
         row = {'timestamp': timestamp, 'value':value, 'type':type}
         rows_load.append(row)
-        print(time,"                                    ","{0:.2f}".format(value))
+        print(timestamp,"                                    ","{0:.2f}".format(value))
         if running == False:
             break
         time.sleep(0.25)
