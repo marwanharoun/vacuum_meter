@@ -8,16 +8,16 @@ import csv
 import time
 import threading
 
-#from Load import LoadCell
-#from Analog import AnalogInput
-#from Flow import Flow
+from Load import LoadCell
+from Analog import AnalogInput
+from Flow import Flow
 from Stopwatch import Timer
 
 
 # GLOBAL VARIABLES:
-#load_cell = LoadCell()
-#analog_input = AnalogInput()
-#flow_input = Flow()
+load_cell = LoadCell()
+analog_input = AnalogInput()
+flow_input = Flow()
 timer = Timer()
 
 rows_load = []
@@ -44,8 +44,7 @@ def create_csv(rows):
 
 def get_pressure(type="pressure"):
     while running:
-#        value = analog_input.get_value()
-        value = "baba"
+        value = analog_input.get_value()
         time = timer.elapsed()
         row = {'timestamp': time, 'value':value, 'type':type}
         rows_pressure.append(row)
@@ -56,8 +55,7 @@ def get_pressure(type="pressure"):
 
 def get_flow(type="flow"):
     while running:
-#        value = flow_input.get_value()
-        value = "tutu"
+        value = flow_input.get_value()
         time = timer.elapsed()
         row = {'timestamp': time, 'value':value, 'type':type}
         rows_flow.append(row)
@@ -67,8 +65,7 @@ def get_flow(type="flow"):
     
 def get_load(type="load"):
     while running:
-#        value = load_cell.get_value()
-        value = "nini"
+        value = load_cell.get_value()
         time = timer.elapsed()
         row = {'timestamp': time, 'value':value, 'type':type}
         rows_load.append(row)
