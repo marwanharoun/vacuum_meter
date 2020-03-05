@@ -1,1 +1,1 @@
-python3 /home/pi/vacuum_meter/bin/main_vac_only.py
+python3 /home/pi/bin/MainVacOnly.py

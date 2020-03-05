@@ -11,24 +11,24 @@ class Timer(object):
         self.start = datetime.datetime.now()
         return self.start
     
-    def stop(self, message="Total: "):
+    def stop(self):
         """Stops the timer.  Returns the time elapsed"""
         self.stop = datetime.datetime.now()
-        return message + str(self.stop - self.start)
+        return float(self.stop - self.start)
     
-    def now(self, message="Now: "):
+    def now(self):
         """Returns the current time with a message"""
-        return message + ": " + str(datetime.datetime.now())
+        return float(datetime.datetime.now())
     
-    def elapsed(self, message="Elapsed: "):
+    def elapsed(self):
         """Time elapsed since start was called"""
-        return message + str(datetime.datetime.now() - self.start)
+        return str(datetime.datetime.now() - self.start)
     
-    def split(self, message="Split started at: "):
+    def split(self):
         """Start a split timer"""
         self.split_start = datetime.datetime.now()
-        return message + str(self.split_start)
+        return float(self.split_start)
     
-    def unsplit(self, message="Unsplit: "):
+    def unsplit(self):
         """Stops a split. Returns the time elapsed since split was called"""
-        return message + str(datetime.datetime.now() - self.split_start)
+        return float(datetime.datetime.now() - self.split_start)

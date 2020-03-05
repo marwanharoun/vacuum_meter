@@ -3,51 +3,33 @@ import socket
 import logging
 import random
 import subprocess
-import load
-import analog
-import flow
 import sys
 import csv
 import time
+import threading
+
+from Load import LoadCell
+from Analog import AnalogInput
+from Flow import Flow
+from Stopwatch import Timer
 
 
 # GLOBAL VARIABLES:
-load_cell = load.LoadCell()
-analog_input = analog.AnalogInput()
-flow_input = flow.Flow()
+load_cell = LoadCell()
+analog_input = AnalogInput()
+flow_input = Flow()
+timer = Timer()
 
+rows_load = []
+rows_pressure = []
+rows_flow = []
 
-#Logger config:
-def set_logger():
-    for handler in logging.root.handlers[:]:
-        logging.root.removeHandler(handler)
-    logging.basicConfig(filename='/home/pi/system.log', format= '%(asctime)s %(levelname)s %(message)s', level= logging.INFO)
+running = True
 
-
-
-def get_values():
-    rows = []
-    try:
-        while True:
-            A = 0.00488594648262289
-            B = -106.44773936296
-            C = -155.787500483901   #Verticality Correction
-            raw = load_cell.get_value()
-            load = A*raw + B - C
-            pressure = analog_input.get_value()
-            flow_rate = flow_input.get_value()
-            print("{0:.2f}".format(pressure),"  ","{0:.2f}".format(load),"{0:.2f}".format(flow_rate))
-            row = {'timestamp': '{:%Y-%m-%d %H:%M:%S:%f}'.format(datetime.datetime.now()), 'load':load, 'pressure':pressure, 'flow':flow_rate}
-            rows.append(row)
-            time.sleep(0.5)
-    except KeyboardInterrupt:
-        print(rows)
-        create_csv(rows)
-        sys.exit()
 
 
 def create_csv(rows):
-    header = ['timestamp', 'load', 'pressure','flow']
+    header = ['timestamp', 'value', 'type']
     desc = input("Enter description: ").replace(" ","_")
     filename = '{:%Y%m%d-%H%M%S}'.format(datetime.datetime.now())+"-"+desc
     DIR = '/home/pi/data/'
@@ -55,6 +37,69 @@ def create_csv(rows):
         csv_writer = csv.DictWriter(f, fieldnames=header)
         csv_writer.writeheader()
         csv_writer.writerows(rows)
+        
+        
+        
+        
+
+def get_pressure(type="pressure"):
+    while running:
+        value = analog_input.get_value()
+        time = timer.elapsed()
+        row = {'timestamp': time, 'value':value, 'type':type}
+        rows_pressure.append(row)
+        print(time,"     ","{0:.2f}".format(value))
+        if running == False:
+            break
+    
+
+def get_flow(type="flow"):
+    while running:
+        value = flow_input.get_value()
+        time = timer.elapsed()
+        row = {'timestamp': time, 'value':value, 'type':type}
+        rows_flow.append(row)
+        print(time,"                    ","{0:.2f}".format(value))
+        if running == False:
+            break
+    
+def get_load(type="load"):
+    while running:
+        value = load_cell.get_value()
+        time = timer.elapsed()
+        row = {'timestamp': time, 'value':value, 'type':type}
+        rows_load.append(row)
+        print(time,"                                    ","{0:.2f}".format(value))
+        if running == False:
+            break
+        
 
 
-get_values()
+def create_threads():
+    thread_pressure = threading.Thread(target=get_pressure)
+    thread_flow = threading.Thread(target=get_flow)
+    thread_load = threading.Thread(target=get_load)
+    
+    thread_pressure.start()
+    thread_flow.start()
+    thread_load.start()
+
+    thread_pressure.join()
+    thread_flow.join()
+    thread_load.join()
+    
+    
+
+
+try:
+    timer.start()
+    create_threads()
+except KeyboardInterrupt:
+    running = False
+    rows = []
+    rows.extend(rows_pressure)
+    rows.extend(rows_load)
+    rows.extend(rows_flow)
+    create_csv(rows)
+    sys.exit()
+

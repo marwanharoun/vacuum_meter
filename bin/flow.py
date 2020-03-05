@@ -7,7 +7,7 @@ class Flow:
 
     def __init__(self):
         CHANNEL = 27
-        GPIO.setmode(GPIO.BCM)
+        GPIO.setmode(GPIO.BCM) #keep that in Main.py only
         GPIO.setup(CHANNEL, GPIO.IN)
         global rev_count
         rev_count = 0
@@ -17,9 +17,14 @@ class Flow:
         global rev_count
         rev_count +=1
 
+    def return_calib(self,input):
+        A = 1
+        B = 0
+        output = A*input + B
+        return output
     
     def get_value(self):
         global rev_count
-        value = rev_count
+        value = self.return_calib(rev_count)
         rev_count = 0
         return value
