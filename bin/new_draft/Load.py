@@ -22,5 +22,5 @@ class LoadCell:
         load = A*(input) + B
 
     def get_value(self):
-        value = return_calib(self.hx711.get_weight_mean(1))
+        value = self.return_calib(self.hx711.get_weight_mean(1))
         return value

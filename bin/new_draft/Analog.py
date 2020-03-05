@@ -22,5 +22,5 @@ class AnalogInput:
 
     def get_value(self):
         global analog_read
-        value = return_calib(analog_read)
+        value = self.return_calib(analog_read)
         return value

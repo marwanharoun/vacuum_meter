@@ -25,6 +25,6 @@ class Flow:
     
     def get_value(self):
         global rev_count
-        value = return_calib(rev_count)
+        value = self.return_calib(rev_count)
         rev_count = 0
         return value
