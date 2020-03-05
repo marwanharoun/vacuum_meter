@@ -50,6 +50,8 @@ def get_pressure(type="pressure"):
         row = {'timestamp': time, 'value':value, 'type':type}
         rows_pressure.append(row)
         print(time,"     ",value)
+        if running == False:
+            break
     
 
 def get_flow(type="flow"):
@@ -60,6 +62,8 @@ def get_flow(type="flow"):
         row = {'timestamp': time, 'value':value, 'type':type}
         rows_flow.append(row)
         print(time,"            ",value)
+        if running == False:
+            break
     
 def get_load(type="load"):
     while running:
@@ -69,6 +73,9 @@ def get_load(type="load"):
         row = {'timestamp': time, 'value':value, 'type':type}
         rows_load.append(row)
         print(time,"                    ",value)
+        if running == False:
+            break
+        
 
 
 def create_threads():
