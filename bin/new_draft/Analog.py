@@ -15,7 +15,7 @@ class AnalogInput:
         #global analog_read
         #analog_read = self.return_calib(self.mcp.read_adc(CHANNEL))
         
-    def return_calib(input):
+    def return_calib(self,input):
         A = 1.259149674
         B = -256.0778551 + 48.74493367
         load = A*(input) + B

@@ -16,7 +16,7 @@ class LoadCell:
         self.hx711.reset()   # Before we start, reset the HX711 (not obligate)
 
 
-    def return_calib(input):
+    def return_calib(self,input):
         A = 0.00488594648262289
         B = -106.44773936296 + 155.787500483901
         load = A*(input) + B
