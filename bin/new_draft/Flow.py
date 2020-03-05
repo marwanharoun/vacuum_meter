@@ -17,7 +17,7 @@ class Flow:
         global rev_count
         rev_count +=1
 
-    def return_calib(input):
+    def return_calib(self,input):
         A = 1
         B = 0
         output = A*input + B
