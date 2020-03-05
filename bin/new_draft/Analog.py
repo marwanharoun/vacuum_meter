@@ -13,7 +13,7 @@ class AnalogInput:
         CHANNEL = 0
         self.mcp = Adafruit_MCP3008.MCP3008(spi=SPI.SpiDev(SPI_PORT, SPI_DEVICE))
         global analog_read
-        analog_read = return_calib(self.mcp.read_adc(CHANNEL))
+        analog_read = self.return_calib(self.mcp.read_adc(CHANNEL))
         
     def return_calib(input):
         A = 1.259149674
