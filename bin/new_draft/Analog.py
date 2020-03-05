@@ -18,7 +18,8 @@ class AnalogInput:
     def return_calib(self,input):
         A = 1.259149674
         B = -256.0778551 + 48.74493367
-        load = A*(input) + B
+        pressure = A*(input) + B
+        return pressure
 
     def get_value(self):
         #global analog_read
