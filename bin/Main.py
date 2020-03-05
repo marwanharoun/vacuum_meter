@@ -45,8 +45,8 @@ def create_csv(rows):
 def get_pressure(type="pressure"):
     while running:
         value = analog_input.get_value()
-        time = timer.elapsed()
-        row = {'timestamp': time, 'value':value, 'type':type}
+        timestamp = timer.elapsed()
+        row = {'timestamp': timestamp, 'value':value, 'type':type}
         rows_pressure.append(row)
         print(time,"     ","{0:.2f}".format(value))
         if running == False:
@@ -57,8 +57,8 @@ def get_pressure(type="pressure"):
 def get_flow(type="flow"):
     while running:
         value = flow_input.get_value()
-        time = timer.elapsed()
-        row = {'timestamp': time, 'value':value, 'type':type}
+        timestamp = timer.elapsed()
+        row = {'timestamp': timestamp, 'value':value, 'type':type}
         rows_flow.append(row)
         print(time,"                    ","{0:.2f}".format(value))
         if running == False:
@@ -68,8 +68,8 @@ def get_flow(type="flow"):
 def get_load(type="load"):
     while running:
         value = load_cell.get_value()
-        time = timer.elapsed()
-        row = {'timestamp': time, 'value':value, 'type':type}
+        timestamp = timer.elapsed()
+        row = {'timestamp': timestamp, 'value':value, 'type':type}
         rows_load.append(row)
         print(time,"                                    ","{0:.2f}".format(value))
         if running == False:
