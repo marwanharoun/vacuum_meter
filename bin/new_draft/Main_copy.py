@@ -59,7 +59,7 @@ def get_flow(type="flow"):
         time = timer.elapsed()
         row = {'timestamp': time, 'value':value, 'type':type}
         rows_flow.append(row)
-        print(time,"            ",value)
+        print(time,"                    ",value)
         if running == False:
             break
     
@@ -69,7 +69,7 @@ def get_load(type="load"):
         time = timer.elapsed()
         row = {'timestamp': time, 'value':value, 'type':type}
         rows_load.append(row)
-        print(time,"                    ",value)
+        print(time,"                                    ",value)
         if running == False:
             break
         
