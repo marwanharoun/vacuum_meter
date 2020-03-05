@@ -32,7 +32,7 @@ def create_csv(rows):
     header = ['timestamp', 'value', 'type']
     desc = input("Enter description: ").replace(" ","_")
     filename = '{:%Y%m%d-%H%M%S}'.format(datetime.datetime.now())+"-"+desc
-    DIR = '/Users/mh/Desktop/'
+    DIR = '/home/pi/data/'
     with open(DIR+filename+'.csv','wt') as f:
         csv_writer = csv.DictWriter(f, fieldnames=header)
         csv_writer.writeheader()
@@ -100,9 +100,9 @@ try:
 except KeyboardInterrupt:
     running = False
     rows = []
-    rows.append(rows_pressure)
-    rows.append(rows_load)
-    rows.append(rows_flow)
+    rows.extend(rows_pressure)
+    rows.extend(rows_load)
+    rows.extend(rows_flow)
     create_csv(rows)
     sys.exit()
 
