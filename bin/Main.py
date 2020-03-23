@@ -93,7 +93,7 @@ def get_load(type="load"):
 #    thread_load.join()
     
 def create_threads():
-    opts = getopt.getopt(sys.argv[1:],'plf')
+    opts, args = getopt.getopt(sys.argv[1:],'plf')
     print(opts)
     argz = []
     for opt, arg in opts:
