@@ -92,7 +92,7 @@ def get_load(type="load"):
 #    #thread_flow.join()
 #    thread_load.join()
     
-def create_threads(args):
+def create_threads():
     opts = getopt.getopt(sys.argv[1:],'plf')
     print(opts)
     list = []
@@ -117,7 +117,7 @@ def create_threads(args):
 
 try:
     timer.start()
-    create_threads(args)
+    create_threads()
 except KeyboardInterrupt:
     running = False
     rows = []
