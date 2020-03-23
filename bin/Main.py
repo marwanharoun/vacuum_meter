@@ -95,15 +95,15 @@ def get_load(type="load"):
 def create_threads():
     opts = getopt.getopt(sys.argv[1:],'plf')
     print(opts)
-    list = []
+    argz = []
     for opt, arg in opts:
-        list.append(opt)
+        argz.append(opt)
     
-    if 'p' in list:
+    if 'p' in argz:
         thread_pressure = threading.Thread(target=get_pressure)
         thread_pressure.start()
         thread_pressure.join()
-    if 'l' in list:
+    if 'l' in argz:
         thread_load = threading.Thread(target=get_load)
         thread_load.start()
         thread_load.join()
