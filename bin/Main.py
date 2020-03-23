@@ -93,7 +93,7 @@ def get_load(type="load"):
 #    thread_load.join()
     
 def create_threads():
-    opts, args = getopt.getopt(sys.argv,'plf')
+    opts, args = getopt.getopt(sys.argv[1:],'plf')
     print(opts, "patats", args)
     if 'p' in opts:
         thread_pressure = threading.Thread(target=get_pressure)
