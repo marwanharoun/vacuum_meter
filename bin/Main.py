@@ -53,7 +53,6 @@ def get_pressure(type="pressure"):
         if running == False:
             break
         time.sleep(0.25)
-    
 
 def get_flow(type="flow"):
     while running:
@@ -78,20 +77,6 @@ def get_load(type="load"):
         time.sleep(0.25)
         
 
-
-#def create_threads():
-#    thread_pressure = threading.Thread(target=get_pressure)
-#    #thread_flow = threading.Thread(target=get_flow)
-#    thread_load = threading.Thread(target=get_load)
-#
-#    thread_pressure.start()
-#    #thread_flow.start()
-#    thread_load.start()
-#
-#    thread_pressure.join()
-#    #thread_flow.join()
-#    thread_load.join()
-    
 def create_threads():
     threads = []
     opts, args = getopt.getopt(sys.argv[1:],'plf')
