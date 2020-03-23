@@ -92,9 +92,9 @@ def get_load(type="load"):
 #    #thread_flow.join()
 #    thread_load.join()
     
-def create_threads():
-    opts, args = getopt.getopt(sys.argv[1:],'plf')
-    print(opts, "patats", args)
+def create_threads(args):
+    opts, args = getopt.getopt(args,'plf')
+    print(opts, args)
     if 'p' in opts:
         thread_pressure = threading.Thread(target=get_pressure)
         thread_pressure.start()
@@ -112,8 +112,9 @@ def create_threads():
 
 
 try:
+    args = sys.argv[1:]
     timer.start()
-    create_threads()
+    create_threads(args)
 except KeyboardInterrupt:
     running = False
     rows = []
