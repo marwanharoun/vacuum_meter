@@ -96,18 +96,30 @@ def create_threads():
     opts, args = getopt.getopt(sys.argv[1:],'plf')
     print(opts)
     argz = []
+    
     for opt, arg in opts:
         argz.append(opt)
     print(argz)
+    
+    threads = []
+    
     if '-p' in argz:
-        thread_pressure = threading.Thread(target=get_pressure)
-        thread_pressure.start()
-        if '-l' in argz:
-            thread_load = threading.Thread(target=get_load)
-            thread_load.start()
-            thread_load.join()
-        thread_pressure.join()
-
+#        thread_pressure = threading.Thread(target=get_pressure)
+        threads.append(threading.Thread(target=get_pressure))
+#        thread_pressure.start()
+        
+    if '-l' in argz:
+#        thread_load = threading.Thread(target=get_load)
+        threads.append(threading.Thread(target=get_load))
+#        thread_load.start()
+    
+    
+#        thread_load.join()
+#        thread_pressure.join()
+    for thread in threads:
+        thread.start()
+    for thread in threads:
+        thread.join()
         
 
         #thread_flow = threading.Thread(target=get_flow)
