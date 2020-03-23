@@ -113,6 +113,7 @@ def create_threads(args):
 
 try:
     args = sys.argv[1:]
+    print(args)
     timer.start()
     create_threads(args)
 except KeyboardInterrupt:
