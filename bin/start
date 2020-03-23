@@ -1,1 +1,1 @@
-python3 /home/pi/bin/Main.py
+python3 /home/pi/bin/Main.py $1
