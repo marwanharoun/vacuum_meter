@@ -93,13 +93,17 @@ def get_load(type="load"):
 #    thread_load.join()
     
 def create_threads(args):
-    opts, args = getopt.getopt(args,'plf')
-    print(opts, args)
-    if 'p' in opts:
+    opts = getopt.getopt(sys.argv[1:],'plf')
+    print(opts)
+    list = []
+    for opt, arg in opts:
+        list.append(opt)
+    
+    if 'p' in list:
         thread_pressure = threading.Thread(target=get_pressure)
         thread_pressure.start()
         thread_pressure.join()
-    if 'l' in opts:
+    if 'l' in list:
         thread_load = threading.Thread(target=get_load)
         thread_load.start()
         thread_load.join()
@@ -112,8 +116,6 @@ def create_threads(args):
 
 
 try:
-    args = sys.argv[1:]
-    print(args)
     timer.start()
     create_threads(args)
 except KeyboardInterrupt:
