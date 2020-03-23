@@ -12,6 +12,7 @@ class LoadCell:
         CHANNEL = 'A'
         GAIN = 64
         GPIO.setmode(GPIO.BCM) #keep that in Main.py only
+        GPIO.setwarnings(False)
         self.hx711 = HX711(DT,SCK,GAIN,CHANNEL)
         self.hx711.reset()   # Before we start, reset the HX711 (not obligate)
 
