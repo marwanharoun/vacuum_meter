@@ -102,11 +102,12 @@ def create_threads():
     if '-p' in argz:
         thread_pressure = threading.Thread(target=get_pressure)
         thread_pressure.start()
+        if '-l' in argz:
+            thread_load = threading.Thread(target=get_load)
+            thread_load.start()
+            thread_load.join()
         thread_pressure.join()
-    if '-l' in argz:
-        thread_load = threading.Thread(target=get_load)
-        thread_load.start()
-        thread_load.join()
+
         
 
         #thread_flow = threading.Thread(target=get_flow)
