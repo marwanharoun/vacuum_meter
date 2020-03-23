@@ -7,6 +7,7 @@ import sys
 import csv
 import time
 import threading
+import getopt
 
 from Load import LoadCell
 from Analog import AnalogInput
@@ -78,20 +79,35 @@ def get_load(type="load"):
         
 
 
+#def create_threads():
+#    thread_pressure = threading.Thread(target=get_pressure)
+#    #thread_flow = threading.Thread(target=get_flow)
+#    thread_load = threading.Thread(target=get_load)
+#
+#    thread_pressure.start()
+#    #thread_flow.start()
+#    thread_load.start()
+#
+#    thread_pressure.join()
+#    #thread_flow.join()
+#    thread_load.join()
+    
 def create_threads():
-    thread_pressure = threading.Thread(target=get_pressure)
-    thread_flow = threading.Thread(target=get_flow)
-    thread_load = threading.Thread(target=get_load)
-    
-    thread_pressure.start()
-    thread_flow.start()
-    thread_load.start()
+    opts, args = getopt.getopt(sys.argv,'plf')
+    if 'p' in opts:
+        thread_pressure = threading.Thread(target=get_pressure)
+        thread_pressure.start()
+        thread_pressure.join()
+    if 'l' in opts:
+        thread_load = threading.Thread(target=get_load)
+        thread_load.start()
+        thread_load.join()
+        
 
-    thread_pressure.join()
-    thread_flow.join()
-    thread_load.join()
-    
-    
+        #thread_flow = threading.Thread(target=get_flow)
+        #thread_flow.start()
+        #thread_flow.join()
+        
 
 
 try:
