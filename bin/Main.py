@@ -96,8 +96,8 @@ def create_threads():
     opts = getopt.getopt(sys.argv[1:],'plf')
     print(opts)
     argz = opts
-#    for opt, arg in opts:
-#        argz.append(opt)
+    for opt, arg in opts:
+        argz.append(opt)
     
     if '-p' in argz:
         thread_pressure = threading.Thread(target=get_pressure)
