@@ -9,6 +9,7 @@ import time
 import threading
 import getopt
 
+from Bme280 import Bme280
 from Load import LoadCell
 from Analog import AnalogInput
 from Flow import Flow
@@ -19,6 +20,7 @@ from Stopwatch import Timer
 load_cell = LoadCell()
 analog_input = AnalogInput()
 flow_input = Flow()
+bme280 = Bme280()
 timer = Timer()
 
 rows_load = []
@@ -45,7 +47,7 @@ def create_csv(rows):
 
 def get_pressure(type="pressure"):
     while running:
-        value = analog_input.get_value()
+        value = bme280.get_pressure()
         timestamp = timer.elapsed()
         row = {'timestamp': timestamp, 'value':value, 'type':type}
         rows_pressure.append(row)
