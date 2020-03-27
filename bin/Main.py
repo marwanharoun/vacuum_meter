@@ -33,7 +33,7 @@ def create_csv(rows):
     header = ['timestamp', 'value', 'type']
     desc = input("Enter description: ").replace(" ","_")
     filename = '{:%Y%m%d-%H%M%S}'.format(datetime.datetime.now())+"-"+desc
-    DIR = '/home/pi/data/'
+    DIR = '/home/pi/public/vacuum_meter_data/'
     with open(DIR+filename+'.csv','wt') as f:
         csv_writer = csv.DictWriter(f, fieldnames=header)
         csv_writer.writeheader()
