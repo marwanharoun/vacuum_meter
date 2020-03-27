@@ -11,14 +11,12 @@ import getopt
 
 from Bme280 import Bme280
 from Load import LoadCell
-from Analog import AnalogInput
 from Flow import Flow
 from Stopwatch import Timer
 
 
 # GLOBAL VARIABLES:
 load_cell = LoadCell()
-analog_input = AnalogInput()
 flow_input = Flow()
 bme280 = Bme280()
 timer = Timer()

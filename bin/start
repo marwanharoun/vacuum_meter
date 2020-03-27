@@ -1,1 +1,1 @@
-python3 /home/pi/bin/Main.py $1
+python3 /home/pi/code/vacuum_meter/bin/Main.py $1
