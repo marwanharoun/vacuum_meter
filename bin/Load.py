@@ -9,7 +9,7 @@ class LoadCell:
     def __init__(self):
         DT = 5
         SCK = 6
-        CHANNEL = 'A'
+        CHANNEL = 'B'
         GAIN = 64
         GPIO.setmode(GPIO.BCM) #keep that in Main.py only
         GPIO.setwarnings(False)
