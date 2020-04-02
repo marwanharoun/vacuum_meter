@@ -68,6 +68,7 @@ def get_flow(type="flow"):
 def get_load(type="load"):
     while running:
         value = load_cell.get_value()
+        value = -value
         timestamp = timer.elapsed()
         row = {'timestamp': timestamp, 'value':value, 'type':type}
         rows_load.append(row)
