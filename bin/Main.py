@@ -112,6 +112,7 @@ try:
     create_threads()
 except KeyboardInterrupt:
     running = False
+    rel_pump.turn_off()
     rows = []
     rows.extend(rows_pressure)
     rows.extend(rows_load)
