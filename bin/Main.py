@@ -13,6 +13,7 @@ from Bme280 import Bme280
 from Load import LoadCell
 from Flow import Flow
 from Stopwatch import Timer
+from Obj_relay import Relay
 
 
 # GLOBAL VARIABLES:
@@ -20,6 +21,7 @@ load_cell = LoadCell()
 flow_input = Flow()
 bme280 = Bme280()
 timer = Timer()
+rel_pump = Relay(2)
 
 rows_load = []
 rows_pressure = []
@@ -106,6 +108,7 @@ def create_threads():
 
 try:
     timer.start()
+    rel_pump.turn_on()
     create_threads()
 except KeyboardInterrupt:
     running = False
